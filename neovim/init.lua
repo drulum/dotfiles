@@ -102,12 +102,17 @@ require('lualine').setup {
 }
 
 -- Setup file explorer
-vim.g.nvim_tree_indent_markers = 1
 vim.g.nvim_tree_highlight_opened_files = 1
 vim.api.nvim_set_keymap('n', 'nn', [[:NvimTreeFocus<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'nm', [[:NvimTreeClose<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'nb', [[:NvimTreeRefresh<CR>]], { noremap = true, silent = true })
-require('nvim-tree').setup()
+require('nvim-tree').setup {
+  renderer = {
+    indent_markers = {
+      enable = true,
+    }
+  }
+}
 
 --Enable Comment.nvim
 require('Comment').setup()
